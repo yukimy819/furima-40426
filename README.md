@@ -4,7 +4,7 @@
 
 | Column             | Type    | Options                   |
 | ------------------ | ------- | ------------------------- |
-| nickname           | string  | null: false, unique: true |
+| nickname           | string  | null: false               |
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false               |
 | first_name         | string  | null: false               |
@@ -23,7 +23,7 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| item_name        | text       | null: false                    |
+| item_name        | string     | null: false                    |
 | price            | integer    | null: false                    |
 | description      | text       | null: false                    |
 | category_id      | integer    | null: false                    |
@@ -44,17 +44,15 @@
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | credit_card     | string     | null: false                    |
-| postal_code     | integer    | null: false                    |
-| prefectures     | string     | null: false                    |
+| postal_code     | string     | null: false                    |
+| area_id         | integer    | null: false                    |
 | municipality    | string     | null: false                    |
 | street_address  | string     | null: false                    |
 | building_name   | string     |                                |
-| phone_number    | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
+| phone_number    | string     | null: false                    |
 | record          | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
 - belongs_to :record
 
 
