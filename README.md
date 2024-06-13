@@ -43,7 +43,6 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| credit_card     | string     | null: false                    |
 | postal_code     | string     | null: false                    |
 | area_id         | integer    | null: false                    |
 | municipality    | string     | null: false                    |
