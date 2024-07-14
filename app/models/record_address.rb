@@ -7,7 +7,7 @@ class RecordAddress
     validates :area, numericality: {other_than: 0, message: "can't be blank"}
     validates :municipality
     validates :street_address
-    validates :phone_number, length: {minimum: 10, maximum: 11}, format: {with: VALID_PHONE_REGEX }
+    validates :phone_number, length: {minimum: 10, maximum: 11}, format: {with: /\A\d{10,11}\z/ }
     validates :user_id
     validates :item_id
   end
