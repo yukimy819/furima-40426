@@ -2,6 +2,7 @@ class RecordsController < ApplicationController
   before_action :authenticate_user!, except: :index
 
   def index
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @item = Item.find(params[:item_id])
     @record_address = RecordAddress.new
   end
@@ -25,7 +26,7 @@ class RecordsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_b7b7f3bcf98e8c7decd8c738"  
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,
         card: record_params[:token],    
