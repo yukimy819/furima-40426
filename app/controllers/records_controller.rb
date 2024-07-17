@@ -19,7 +19,7 @@ class RecordsController < ApplicationController
       render :index, status: :unprocessable_entity
     end
   end
-
+  
   private
 
   def record_params
