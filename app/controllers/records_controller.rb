@@ -1,15 +1,14 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item, only: [:index, :create]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @item = Item.find(params[:item_id])
     @record_address = RecordAddress.new
     redirect_to root_path if @item.record.present?
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @record_address = RecordAddress.new(record_params)
     if @record_address.valid?
       pay_item
@@ -34,6 +33,10 @@ class RecordsController < ApplicationController
         card: record_params[:token],    
         currency: 'jpy'                
       )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
 end
