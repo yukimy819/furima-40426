@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :delivery_date
   has_one_attached :image
+  has_one :record
 
   validates :item_name, :description, :image, :category_id, :condition_id, :delivery_fee_id, :area_id, :delivery_date_id,
             presence: true
@@ -14,4 +15,6 @@ class Item < ApplicationRecord
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :category_id, :condition_id, :delivery_fee_id, :area_id, :delivery_date_id,
             numericality: { other_than: 1, message: "can't be blank" }
+
+
 end

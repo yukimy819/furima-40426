@@ -23,8 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return unless current_user != @item.user
-
+    return unless current_user != @item.user || @item.record.present?
     redirect_to root_path
   end
 
@@ -43,6 +42,7 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+
   private
 
   def item_params
@@ -53,4 +53,5 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
 end

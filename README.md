@@ -69,3 +69,4 @@
 - has_one :address
 
 
+
